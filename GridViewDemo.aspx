@@ -2,7 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" 
         AutoGenerateColumns="false" DataKeyNames="ID" AllowPaging="true" PageSize="10" GridLines="None"
-        OnPageIndexChanging="GridView1_PageIndexChanging" OnPageIndexChanged="GridView1_PageIndexChanged">
+        OnPageIndexChanging="GridView1_PageIndexChanging" OnPageIndexChanged="GridView1_PageIndexChanged"
+        OnRowEditing="GridView1_RowEditing" OnRowCancelingEdit="GridView1_RowCancelingEdit"
+        OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting">
         <AlternatingRowStyle BackColor="White" />
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -16,7 +18,8 @@
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
 
         <Columns>
-            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="Name" />
+           
+            <asp:BoundField DataField="ID" ReadOnly="true" HeaderText="ID" SortExpression="Name" />
 
             <asp:TemplateField HeaderText="FIRST NAME" SortExpression="Firstname">
                 <ItemTemplate><%# Eval("First_name") %></ItemTemplate>
@@ -24,13 +27,9 @@
                     <asp:TextBox ID="FirstnameTB" runat="server" Text=<%# Bind("First_name") %>></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
+
         
-            <asp:TemplateField HeaderText="LAST NAME" SortExpression="Lastname">
-                <ItemTemplate><%# Eval("Last_name") %></ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="LastnameTB" runat="server" Text=<%# Bind("Last_name") %>></asp:TextBox>
-                </EditItemTemplate>
-            </asp:TemplateField>
+            <asp:BoundField DataField="Last_name" HeaderText="Last Name" SortExpression="LastName" />
 
             <asp:TemplateField HeaderText="EMAIL" SortExpression="Email">
                 <ItemTemplate><%# Eval("Email") %></ItemTemplate>
@@ -40,7 +39,7 @@
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="GENDER" SortExpression="Gender">
-                <ItemTemplate> <asp:Label ID="Email" runat="server" Text=<%# Eval("Gender") %>></asp:Label></ItemTemplate>
+                <ItemTemplate> <asp:Label runat="server" Text=<%# Eval("Gender") %>></asp:Label></ItemTemplate>
                 <EditItemTemplate>
                     <asp:DropDownList ID="EmailDD" runat="server">
                         <asp:ListItem>M</asp:ListItem>
