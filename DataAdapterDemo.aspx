@@ -12,4 +12,6 @@
         <SortedDescendingCellStyle BackColor="#D8D8F0" />
         <SortedDescendingHeaderStyle BackColor="#3E3277" />
     </asp:GridView>
+    <hr />
+    <asp:Button ID="Button1" runat="server" Text="Button" />
 </asp:Content>
